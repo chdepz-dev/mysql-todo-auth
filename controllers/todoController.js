@@ -9,12 +9,13 @@ exports.todoList = (req, res) => {
             <form style="display:inline" method="POST" action="/todo/edit/${todo.id}">
             <input type="text" name="task" value="${todo.task}" required>
             <button type="submit">Edit</button>
+            <button type="submit">save</button>
             </form>
             <form style="display:inline" method="POST" action="/todo/delete/${todo.id}">
              <button>Delete</button>
             </form>
             </li>
-            `)
+            `).join("")
         res.send(`
                 <link rel="stylesheet" href="/css/style.css">
                 <div class="container">
@@ -40,7 +41,7 @@ exports.addTodo = (req, res) => {
 }
 
 exports.deleteTodo = (req, res) => {
-    db.query("DELETE FROM todos WHERE id = ? AND user_id = ?", [req.session.userId], err => {
+    db.query("DELETE FROM todos WHERE id = ? AND user_id = ?",[req.params.id,req.session.userId], err => {
         if (err) return res.status(500).send("Database error while deleting task");
         res.redirect("/todo");
     })
