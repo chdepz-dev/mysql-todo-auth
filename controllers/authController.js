@@ -20,9 +20,9 @@ exports.getLogin = (req, res) => res.sendFile(path.join(__dirname, '../public/ht
 
 exports.login = (req, res) => {
     const { username, password } = req.body;
-    if (!username || password) return res.status(400).send("all fields are required");
+    if (!username || !password) return res.status(400).send("all fields are required");
 
-    db.query("SELECT FROM users WHERE username?", [username], (error, results) => {
+    db.query("SELECT * FROM users WHERE username = ?", [username], (error, results) => {
         if (error) return res.status(500).send("Database error while verifying user");
         if (!results.length) res.status(401).send("Invalid credentials");
 
@@ -39,6 +39,6 @@ exports.login = (req, res) => {
 exports.logout = (req, res) => {
     req.session.destroy(err =>{
         if(err) return res.status(500).send("failed to log out");
-        res.redirect("/login ")
+        res.redirect("/login")
     })
 }

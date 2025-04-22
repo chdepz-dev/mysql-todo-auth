@@ -7,6 +7,9 @@ const authController = require("./controllers/authController")
 const todoController = require("./controllers/todoController")
 const authMiddleware = require("./middlewares/authMiddleware")
 
+const authRoutes = require("./routes/auth");
+const todoRoutes = require("./routes/todo")
+
 //intializing the app
 const app = express();
 
@@ -23,10 +26,13 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(session({
     secret: "sjfeiojscnkdfjejiosjoss",
     resave: false,
-    saveUnintialized: true,
+    saveUninitialized: true,
     cookie: { secure: false }
 }));
 
+//route modules
+app.use("/", authRoutes);
+app.use("/todo", todoRoutes)
 // routes for authentication 
 
 app.get("/login", authController.getLogin);
