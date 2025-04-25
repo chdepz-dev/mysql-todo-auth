@@ -8,9 +8,8 @@ exports.todoList = (req, res) => {
             <link rel="stylesheet" href="/css/style.css">
             <li>
             <form class="list" style="display:inline" method="POST" action="/todo/edit/${todo.id}">
-            <input class="todoList" type="text" name="task" value="${todo.task}" required>
-            <button class="edit" type="submit">Edit</button>
-            <button class="save" type="submit">save</button>
+            <input class="todoList" type="text" name="task" value="${todo.task}"required>
+            <button class="edit" type="submit" onclick="enableEdit(this)">Edit</button>
             </form>
             <form class="del "style="display:inline" method="POST" action="/todo/delete/${todo.id}">
              <button class="delete">Delete</button>
@@ -27,10 +26,12 @@ exports.todoList = (req, res) => {
                 <button class="submit" type="submit">Add task</button>
                 </form>
                 <ul>${list}</ul>
+                <p>press enter to save your todo lists.😊</p>
                 <a href="/logout" class="logout">logout</a>
                 </div>
                 </div>
-                `)
+                
+`)
     })
 }
 

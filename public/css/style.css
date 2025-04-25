@@ -219,12 +219,12 @@ html,body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color:  lightgrey;
+
   }
  .main{
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 50%;
   padding: 5px;
  }
  .main h2{
@@ -242,9 +242,10 @@ html,body{
   outline: none;
   border-radius: 2px;
   padding: 5px;
+  background-color:  lightgrey;
  }
  .main .submit{
-  width: 30%;
+  width: 24%;
   padding: 5px;
   font-size: 16px;
   background-color: green;
@@ -253,38 +254,37 @@ html,body{
   border: none;
   border-radius: 2px;
  }
+ .main p {
+  margin: 5px 0;
+ }
  .list{
   display: flex;
   width: 100%;
  }
- 
+ .todoList{
+  font-size: 17px;
+ }
+
  .list .edit{
-  width: 50px;
+  width: 88px;
   background-color: blue;
   color: white;
   padding: 5px;
   border: none;
   border-radius: 2px;
   cursor: pointer;
- }
- .list .save{
-  width: 50px;
-  background-color: green;
-  color: white;
-  padding: 5px;
-  border: none;
-  border-radius: 2px;
-  cursor: pointer;
+  font-size: 18px;
  }
 
  .del .delete{
-  width: 70px;
+  width: 88px;
   background-color: red;
   color: white;
   padding: 5px;
   border: none;
   border-radius: 2px;
   cursor: pointer;
+  font-size: 18px;
  }
      .logout {
       width: 20%;
@@ -308,5 +308,6 @@ html,body{
     li {
         margin: 8px 0;
     }
-
+   
+    
     
