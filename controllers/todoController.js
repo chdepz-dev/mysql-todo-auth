@@ -5,27 +5,30 @@ exports.todoList = (req, res) => {
         if (err) return res.status(500).send("Database error while fetching tasks");
 
         let list = todos.map(todo => `
+            <link rel="stylesheet" href="/css/style.css">
             <li>
-            <form style="display:inline" method="POST" action="/todo/edit/${todo.id}">
-            <input type="text" name="task" value="${todo.task}" required>
-            <button type="submit">Edit</button>
-            <button type="submit">save</button>
+            <form class="list" style="display:inline" method="POST" action="/todo/edit/${todo.id}">
+            <input class="todoList" type="text" name="task" value="${todo.task}" required>
+            <button class="edit" type="submit">Edit</button>
+            <button class="save" type="submit">save</button>
             </form>
-            <form style="display:inline" method="POST" action="/todo/delete/${todo.id}">
-             <button>Delete</button>
+            <form class="del "style="display:inline" method="POST" action="/todo/delete/${todo.id}">
+             <button class="delete">Delete</button>
             </form>
             </li>
             `).join("")
         res.send(`
                 <link rel="stylesheet" href="/css/style.css">
                 <div class="container">
+                <div class="main">
                 <h2>YOUR TODO LIST</h2>
                 <form method="POST" action="/todo/add" class="todo-form">
                 <input type="text" name="task" placeholder=""New Task" required>
-                <button type="submit">Add task</button>
+                <button class="submit" type="submit">Add task</button>
                 </form>
                 <ul>${list}</ul>
                 <a href="/logout" class="logout">logout</a>
+                </div>
                 </div>
                 `)
     })

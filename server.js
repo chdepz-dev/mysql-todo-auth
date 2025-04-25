@@ -30,11 +30,14 @@ app.use(session({
     cookie: { secure: false }
 }));
 
+
 //route modules
 app.use("/", authRoutes);
 app.use("/todo", todoRoutes)
-// routes for authentication 
 
+
+
+// routes for authentication 
 app.get("/login", authController.getLogin);
 app.post("/login", authController.login);
 app.get("/register", authController.getRegister);
